@@ -32,45 +32,62 @@ const io = new IntersectionObserver(entries => {
 
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-// ---------- order form: plan preselect + mailto compose ----------
+// ---------- order form: plan preselect + WhatsApp / email compose ----------
+const WA_NUMBER = '8801795135743';
 const planSelect = document.getElementById('of-plan');
 document.querySelectorAll('[data-plan]').forEach(a =>
   a.addEventListener('click', () => { planSelect.value = a.dataset.plan; })
 );
 
-['of-name', 'of-phone', 'of-email', 'of-app'].forEach(id =>
+const orderFields = ['of-name', 'of-phone', 'of-email', 'of-app'];
+orderFields.forEach(id =>
   document.getElementById(id).addEventListener('input', e => {
     e.target.classList.remove('field-error');
-    if (![...document.querySelectorAll('.field-error')].length)
+    if (!document.querySelector('.field-error'))
       document.getElementById('order-error').hidden = true;
   })
 );
 
-document.getElementById('order-form').addEventListener('submit', e => {
-  e.preventDefault();
-  const fields = ['of-name', 'of-phone', 'of-email', 'of-app'];
-  const errorMsg = document.getElementById('order-error');
+function validateOrder() {
   let firstEmpty = null;
-  fields.forEach(id => {
+  orderFields.forEach(id => {
     const el = document.getElementById(id);
     const empty = !el.value.trim();
     el.classList.toggle('field-error', empty);
     if (empty && !firstEmpty) firstEmpty = el;
   });
-  errorMsg.hidden = !firstEmpty;
-  if (firstEmpty) { firstEmpty.focus(); return; }
+  document.getElementById('order-error').hidden = !firstEmpty;
+  if (firstEmpty) firstEmpty.focus();
+  return !firstEmpty;
+}
 
+function orderMessage() {
   const val = id => document.getElementById(id).value.trim();
   const planText = planSelect.options[planSelect.selectedIndex].text;
-  const body = [
-    `Package: ${planText}`,
-    `Name: ${val('of-name')}`,
-    `Mobile / WhatsApp: ${val('of-phone')}`,
-    `Email: ${val('of-email')}`,
-    '',
-    'App link / description:',
-    val('of-app')
-  ].join('\n');
+  return {
+    planText,
+    body: [
+      `New testing order: ${planText}`,
+      `Name: ${val('of-name')}`,
+      `Mobile / WhatsApp: ${val('of-phone')}`,
+      `Email: ${val('of-email')}`,
+      '',
+      'App link / description:',
+      val('of-app')
+    ].join('\n')
+  };
+}
+
+document.getElementById('order-form').addEventListener('submit', e => {
+  e.preventDefault();
+  if (!validateOrder()) return;
+  const { body } = orderMessage();
+  open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(body)}`, '_blank', 'noopener');
+});
+
+document.getElementById('order-email').addEventListener('click', () => {
+  if (!validateOrder()) return;
+  const { planText, body } = orderMessage();
   location.href = 'mailto:hello@closedtestingcrew.com'
     + '?subject=' + encodeURIComponent('New testing order: ' + planText)
     + '&body=' + encodeURIComponent(body);

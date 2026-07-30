@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Closed Testing Crew</title>
+<meta name="description" content="Contact Closed Testing Crew on WhatsApp (+880 1795-135743) or email. Questions about Google Play closed testing answered by a real human within the hour.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%23fdfdfc' stroke='%23212a24' stroke-width='6'/><path d='M28 52l16 16 30-34' stroke='%23197a4b' stroke-width='10' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html" aria-label="Closed Testing Crew home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><rect x="6" y="2" width="12" height="20" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M9.5 12.5l2 2 3.5-4" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <span>Closed&nbsp;Testing&nbsp;<span class="brand-num">Crew</span></span>
+    </a>
+    <a class="btn btn-outline btn-sm nav-back" href="index.html">Back to site</a>
+  </div>
+</header>
+
+<main class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>Talk to a real human</h2>
+      <p>Questions about the 12-tester rule, your app, or a package? Message us any way you like. Replies come from the team that actually runs your testers, usually within the hour.</p>
+    </div>
+
+    <div class="contact-grid">
+      <form class="order-form" id="contact-form" novalidate>
+        <div class="field">
+          <label for="cf-name">Your name</label>
+          <input id="cf-name" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="cf-phone">Mobile / WhatsApp number</label>
+          <input id="cf-phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+8801XXXXXXXXX" required>
+        </div>
+        <div class="field field-wide">
+          <label for="cf-email">Email</label>
+          <input id="cf-email" type="email" autocomplete="email" required>
+        </div>
+        <div class="field field-wide">
+          <label for="cf-msg">Your message</label>
+          <textarea id="cf-msg" rows="5" placeholder="Your question, your app link, anything at all" required></textarea>
+        </div>
+        <p class="order-error mono" id="contact-error" hidden>Please fill in every field before sending.</p>
+        <div class="order-actions">
+          <button class="btn btn-primary btn-lg" type="submit">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3a9 9 0 00-7.8 13.5L3 21l4.7-1.2A9 9 0 1012 3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8.8 8.6c.4-.9 1-.7 1.3-.1l.5 1c.1.3.1.6-.1.8l-.5.6c.5 1 1.4 1.9 2.5 2.4l.6-.6c.2-.2.5-.3.8-.1l1 .5c.6.3.8.9-.1 1.3-2.7 1.3-6.6-2.6-6-5.8z" fill="currentColor"/></svg>
+            Send on WhatsApp
+          </button>
+          <button class="btn btn-outline btn-lg" type="button" id="contact-email">Send by email</button>
+        </div>
+      </form>
+
+      <aside class="contact-direct">
+        <h3>Direct lines</h3>
+        <ul>
+          <li>
+            <span class="contact-label mono">WHATSAPP</span>
+            <a href="https://wa.me/8801795135743" target="_blank" rel="noopener">+880 1795-135743</a>
+          </li>
+          <li>
+            <span class="contact-label mono">EMAIL</span>
+            <a href="mailto:hello@closedtestingcrew.com">hello@closedtestingcrew.com</a>
+          </li>
+          <li>
+            <span class="contact-label mono">HOURS</span>
+            <span>Every day, replies within the hour</span>
+          </li>
+        </ul>
+        <p class="contact-hint">Ready to order instead? Pick a package on the <a href="index.html#pricing">pricing section</a> and the order form fills itself in.</p>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container footer-bottom">
+    <p>© 2026 Closed Testing Crew. Not affiliated with Google LLC. Google Play is a trademark of Google LLC. We provide testing services only — approval decisions are made solely by Google.</p>
+  </div>
+</footer>
+
+<script>
+const WA_NUMBER = '8801795135743';
+const fields = ['cf-name', 'cf-phone', 'cf-email', 'cf-msg'];
+fields.forEach(id =>
+  document.getElementById(id).addEventListener('input', e => {
+    e.target.classList.remove('field-error');
+    if (!document.querySelector('.field-error'))
+      document.getElementById('contact-error').hidden = true;
+  })
+);
+function validate() {
+  let firstEmpty = null;
+  fields.forEach(id => {
+    const el = document.getElementById(id);
+    const empty = !el.value.trim();
+    el.classList.toggle('field-error', empty);
+    if (empty && !firstEmpty) firstEmpty = el;
+  });
+  document.getElementById('contact-error').hidden = !firstEmpty;
+  if (firstEmpty) firstEmpty.focus();
+  return !firstEmpty;
+}
+function message() {
+  const val = id => document.getElementById(id).value.trim();
+  return [
+    `Name: ${val('cf-name')}`,
+    `Mobile / WhatsApp: ${val('cf-phone')}`,
+    `Email: ${val('cf-email')}`,
+    '',
+    val('cf-msg')
+  ].join('\n');
+}
+document.getElementById('contact-form').addEventListener('submit', e => {
+  e.preventDefault();
+  if (!validate()) return;
+  open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message())}`, '_blank', 'noopener');
+});
+document.getElementById('contact-email').addEventListener('click', () => {
+  if (!validate()) return;
+  location.href = 'mailto:hello@closedtestingcrew.com?subject='
+    + encodeURIComponent('Question from ' + document.getElementById('cf-name').value.trim())
+    + '&body=' + encodeURIComponent(message());
+});
+</script>
+
+</body>
+</html>
