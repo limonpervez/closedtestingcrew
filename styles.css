@@ -627,6 +627,7 @@ p { text-wrap: pretty; }
 .legal ul { list-style: disc; padding-left: 1.3rem; margin-top: 0.8rem; max-width: 62ch; }
 .legal ul li { margin-top: 0.4rem; color: var(--ink-2); font-size: 0.97rem; }
 .legal a { color: var(--accent-deep); font-weight: 600; }
+.legal a.btn-primary, .post-cta a.btn-primary { color: var(--on-accent); }
 
 /* ---------- reveal motion (JS-gated: visible by default) ---------- */
 html.js .reveal {
