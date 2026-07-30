@@ -565,6 +565,35 @@ p { text-wrap: pretty; }
 .faq-body { padding: 0 0.25rem 1.4rem; max-width: 65ch; }
 .faq-body p { color: var(--ink-2); font-size: 0.97rem; }
 
+/* ---------- order form ---------- */
+.order-form {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1.2rem 1.5rem;
+  max-width: 720px;
+  background: var(--surface);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--r-md);
+  box-shadow: 8px 8px 0 0 var(--accent-tint);
+  padding: clamp(1.6rem, 4vw, 2.4rem);
+}
+.field { display: flex; flex-direction: column; gap: 0.4rem; }
+.field-wide { grid-column: 1 / -1; }
+.field label { font-weight: 600; font-size: 0.92rem; }
+.field input, .field select, .field textarea {
+  font: inherit; color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--ink);
+  border-radius: var(--r-sm);
+  padding: 0.7rem 0.85rem;
+  width: 100%;
+}
+.field textarea { resize: vertical; min-height: 96px; }
+.field input::placeholder, .field textarea::placeholder { color: var(--ink-3); }
+.field input.field-error, .field textarea.field-error { border-color: var(--red-ink); border-width: 1.5px; }
+.order-error { grid-column: 1 / -1; font-size: 0.8rem; font-weight: 600; color: var(--red-ink); }
+.order-note { grid-column: 1 / -1; font-size: 0.85rem; color: var(--ink-2); }
+.order-form .btn { grid-column: 1 / -1; justify-self: start; }
+
 /* ---------- final CTA ---------- */
 .cta-final { padding-block: clamp(3rem, 7vw, 5.5rem); }
 .cta-box {
@@ -689,5 +718,7 @@ html.js .reveal.in { opacity: 1; transform: none; }
   .step + .step { border-top: 1px solid var(--rule); }
   .hero-actions .btn { width: 100%; }
   .cta-actions .btn { width: 100%; }
+  .order-form { grid-template-columns: 1fr; }
+  .order-form .btn { width: 100%; }
   .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
 }

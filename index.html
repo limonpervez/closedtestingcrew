@@ -232,7 +232,7 @@
           <li>Final feedback report (Play-ready)</li>
           <li>Support until approved</li>
         </ul>
-        <a class="btn btn-outline btn-block" href="#footer-contact">Start with Standard</a>
+        <a class="btn btn-outline btn-block" href="#order" data-plan="standard">Start with Standard</a>
       </article>
 
       <article class="plan plan-featured" id="plan-pro">
@@ -251,7 +251,7 @@
           <li>Battery / performance notes per device</li>
           <li>Production launch assistance</li>
         </ul>
-        <a class="btn btn-primary btn-block" href="#footer-contact">Start with Pro</a>
+        <a class="btn btn-primary btn-block" href="#order" data-plan="pro">Start with Pro</a>
       </article>
 
       <article class="plan" id="plan-lifetime">
@@ -269,7 +269,7 @@
           <li>Private WhatsApp group stays open</li>
           <li>Priority support anytime</li>
         </ul>
-        <a class="btn btn-outline btn-block" href="#footer-contact">Start with Lifetime</a>
+        <a class="btn btn-outline btn-block" href="#order" data-plan="lifetime">Start with Lifetime</a>
       </article>
     </div>
 
@@ -480,6 +480,45 @@
   </div>
 </section>
 
+<!-- ======= ORDER ======= -->
+<section class="section" id="order">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2>Start your 14-day cycle</h2>
+      <p>Pick your package and tell us where to find your app. A real human replies within the hour with payment details and your WhatsApp group invite.</p>
+    </div>
+    <form class="order-form reveal" id="order-form" novalidate>
+      <div class="field field-wide">
+        <label for="of-plan">Package</label>
+        <select id="of-plan" name="package">
+          <option value="standard">Standard · $19.99 · 12 testers</option>
+          <option value="pro" selected>Pro · $34.99 · 20 testers (most chosen)</option>
+          <option value="lifetime">Lifetime · $69.99 · 20 testers + lifetime install</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="of-name">Your name</label>
+        <input id="of-name" type="text" autocomplete="name" required>
+      </div>
+      <div class="field">
+        <label for="of-phone">Mobile / WhatsApp number</label>
+        <input id="of-phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+8801XXXXXXXXX" required>
+      </div>
+      <div class="field field-wide">
+        <label for="of-email">Email</label>
+        <input id="of-email" type="email" autocomplete="email" required>
+      </div>
+      <div class="field field-wide">
+        <label for="of-app">App link or description</label>
+        <textarea id="of-app" rows="4" placeholder="Closed-testing opt-in link, Play Console link, or a short description of your app" required></textarea>
+      </div>
+      <p class="order-error mono" id="order-error" hidden>Please fill in every field before sending.</p>
+      <p class="order-note">Sending opens your email app with everything pre-filled. Hit send and your cycle is in the queue.</p>
+      <button class="btn btn-primary btn-lg" type="submit">Send order request</button>
+    </form>
+  </div>
+</section>
+
 <!-- ======= FINAL CTA ======= -->
 <section class="section cta-final">
   <div class="container reveal">
@@ -487,7 +526,7 @@
       <h2>Your 14-day countdown starts today.</h2>
       <p>Submit your opt-in link now. Real testers will be on your app within hours.</p>
       <div class="hero-actions cta-actions">
-        <a class="btn btn-primary btn-lg" href="#pricing">Get Started Now</a>
+        <a class="btn btn-primary btn-lg" href="#order">Get Started Now</a>
         <button class="btn btn-outline btn-lg" id="chat-cta" type="button">Talk to a human first</button>
       </div>
     </div>
