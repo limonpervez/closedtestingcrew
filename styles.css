@@ -370,19 +370,6 @@ p { text-wrap: pretty; }
   color: var(--accent-deep); font-weight: 700; font-size: 0.85rem;
 }
 
-.guarantee {
-  display: flex; gap: 1.1rem; align-items: flex-start;
-  max-width: 880px; margin-top: 2rem;
-  border: 1.5px dashed var(--accent);
-  background: var(--accent-tint);
-  color: var(--accent-deep);
-  border-radius: var(--r-md);
-  padding: 1.4rem 1.6rem;
-}
-.guarantee svg { flex: none; margin-top: 0.15rem; }
-.guarantee strong { font-size: 1.05rem; }
-.guarantee p { margin-top: 0.25rem; font-size: 0.93rem; color: oklch(34% 0.09 155); }
-
 /* ---------- process steps (a genuine sequence) ---------- */
 .steps {
   counter-reset: step;
