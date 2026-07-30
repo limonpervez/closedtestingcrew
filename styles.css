@@ -541,7 +541,6 @@ p { text-wrap: pretty; }
 .post-item a { text-decoration: none; display: block; }
 .post-item h3 { font-size: 1.35rem; font-weight: 700; }
 .post-item a:hover h3 { color: var(--accent-deep); }
-.post-meta { display: block; font-size: 0.72rem; color: var(--ink-2); letter-spacing: 0.05em; margin-bottom: 0.5rem; }
 .post-item p { margin-top: 0.5rem; color: var(--ink-2); font-size: 0.95rem; max-width: 62ch; }
 .post-cta {
   margin-top: 2.8rem;
