@@ -101,6 +101,15 @@
 
 <script>
 const WA_NUMBER = '8801795135743';
+function track(name, params) {
+  if (typeof gtag === 'function') gtag('event', name, params || {});
+}
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href]');
+  if (!a) return;
+  if (a.href.includes('wa.me')) track('whatsapp_click', { link_location: 'contact_page' });
+  else if (a.href.startsWith('mailto:')) track('email_click', { link_location: 'contact_page' });
+});
 const fields = ['cf-name', 'cf-phone', 'cf-email', 'cf-msg'];
 fields.forEach(id =>
   document.getElementById(id).addEventListener('input', e => {
@@ -134,10 +143,12 @@ function message() {
 document.getElementById('contact-form').addEventListener('submit', e => {
   e.preventDefault();
   if (!validate()) return;
+  track('generate_lead', { method: 'contact_whatsapp' });
   open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message())}`, '_blank', 'noopener');
 });
 document.getElementById('contact-email').addEventListener('click', () => {
   if (!validate()) return;
+  track('generate_lead', { method: 'contact_email' });
   location.href = 'mailto:hello@closedtestingcrew.com?subject='
     + encodeURIComponent('Question from ' + document.getElementById('cf-name').value.trim())
     + '&body=' + encodeURIComponent(message());
