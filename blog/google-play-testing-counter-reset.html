@@ -32,6 +32,30 @@
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="../assets/favicon-192.png">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why isn't my Google Play closed testing counter increasing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The most common causes are a tester count that dipped below 12 even briefly, testers who opted in but never opened the app, switching testing tracks mid-cycle, or using emulator/device-farm testers that Google's systems discount."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can a single dropped tester reset my 14-day closed testing streak?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. If your opted-in tester count drops below 12 for even a day, most developers report the continuous-engagement streak resets rather than pausing, which is why recruiting a buffer above 12 testers matters."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
