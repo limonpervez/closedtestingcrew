@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-B2X7WKJ270"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-B2X7WKJ270');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google Play Production Access Rejected: Every Reason + How to Fix It — Closed Testing Crew</title>
+<meta name="description" content="Got rejected after your 14-day closed test? Here's every documented reason Google denies Production access, and the specific fix for each, from developers who've been through it.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Closed Testing Crew">
+<meta property="og:title" content="Google Play Production Access Rejected: Every Reason + How to Fix It">
+<meta property="og:description" content="Every documented reason Google denies Production access after closed testing, and the fix for each.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="../assets/favicon-192.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="/" aria-label="Closed Testing Crew home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><rect x="6" y="2" width="12" height="20" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M9.5 12.5l2 2 3.5-4" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <span>Closed&nbsp;Testing&nbsp;<span class="brand-num">Crew</span></span>
+    </a>
+    <a class="btn btn-outline btn-sm nav-back" href="/blog/">All posts</a>
+  </div>
+</header>
+
+<main class="section">
+  <div class="container container-narrow legal">
+    <h1>Google Play Production Access Rejected: Every Reason + How to Fix It</h1>
+
+    <p>You finished your 14 days, applied for Production access, and got a rejection email instead. It's a specific kind of frustrating because Google's rejection messages are short and rarely explain exactly what to change. Below is every documented rejection reason, drawn from Play Console rejection emails and developer reports, with what actually fixes each one.</p>
+
+    <h2>"Testers did not sufficiently engage with your app"</h2>
+    <p>The most common rejection reason by far. Google isn't just checking that testers opted in, it's checking for genuine, sustained usage. If several testers accepted the invite and rarely or never opened the app, this is what gets flagged.</p>
+    <p><strong>Fix:</strong> Before reapplying, recruit testers who will actually use the app daily, not just opt in. Confirm engagement directly rather than assuming an opt-in means usage. See our post on <a href="/blog/google-play-testing-counter-reset">why your testing counter stalls</a> for the deeper mechanics here.</p>
+
+    <h2>"Your testing period was not continuous"</h2>
+    <p>Gaps in tester count, even short ones, can break continuity. If you dropped below 12 opted-in testers at any point, even for a day, Google may treat the whole cycle as not meeting the requirement, regardless of your total days elapsed.</p>
+    <p><strong>Fix:</strong> Restart with a buffer of 14-16 testers instead of exactly 12, and watch your tester count daily so you can react to a drop immediately instead of finding out at the end.</p>
+
+    <h2>"We could not verify authentic device usage"</h2>
+    <p>This is Google's way of saying it suspects emulators, device farms, or bot activity. Scripted opens on virtual devices leave patterns real usage doesn't: identical session lengths, no other installed apps, no SIM card history, timestamps that are too regular. Read the full mechanics in <a href="/blog/emulator-testers-google-play-ban">do emulator testers get you banned</a>.</p>
+    <p><strong>Fix:</strong> Only use real people testing on real, previously-used phones. If you used a bot or emulator service for your first attempt, don't reuse the same testers or device fingerprints on your next attempt, start clean with genuine devices.</p>
+
+    <h2>"Insufficient information in your Production access request"</h2>
+    <p>The application form asks how you recruited testers, what feedback you received, and what changes you made based on it. Vague or one-line answers ("no issues found," "tested normally") read as low-effort and correlate with rejections, even when the underlying test data was fine.</p>
+    <p><strong>Fix:</strong> Write specific, detailed answers. Name how you recruited testers, describe at least one real piece of feedback or bug you received, and explain what you changed because of it. Evidence of an active feedback loop matters more than a clean bug-free story.</p>
+
+    <h2>"Your app violates a Play Store policy"</h2>
+    <p>Sometimes the rejection has nothing to do with your testing cycle and everything to do with the app itself, permissions that look excessive for the app's function, missing privacy policy, content that trips a policy filter. This rejection is unrelated to your 12-tester process and won't be fixed by running the test again.</p>
+    <p><strong>Fix:</strong> Read the specific policy citation in the rejection email carefully (not just the headline) and address that exact issue before reapplying. A generic re-run of your closed test won't help if the underlying problem is the app listing or permissions.</p>
+
+    <h2>"Account is newly created or has limited history"</h2>
+    <p>Brand-new developer accounts sometimes face extra scrutiny purely because they're new, independent of testing quality. This isn't officially documented but shows up often enough in developer reports to be worth knowing about.</p>
+    <p><strong>Fix:</strong> There's no shortcut here except time and a clean track record. Make sure everything else in your application, testing quality, app policy compliance, answer completeness, is airtight, since you have less benefit of the doubt on a new account.</p>
+
+    <h2>What to do after any rejection</h2>
+    <ul>
+      <li>Read the rejection email fully. Google usually cites at least one specific reason, even if brief.</li>
+      <li>Don't just resubmit the same application immediately. Fix the underlying cause first.</li>
+      <li>If the reason is testing quality, you can usually continue on the same closed track, you don't always need to restart the full 14 days from zero, but check your current tester count and continuity before reapplying.</li>
+      <li>Keep records (screenshots, tester notes) so your next application has real evidence to cite.</li>
+    </ul>
+
+    <h2>The pattern across every rejection reason</h2>
+    <p>With the exception of policy violations, every rejection reason above traces back to the same root cause: Google couldn't confidently verify that real people used your app in a sustained, authentic way. Fixing that root cause, real testers, real devices, real daily engagement, real feedback, solves most rejections regardless of which specific reason Google cited.</p>
+
+    <div class="post-cta">
+      <strong>Don't risk a second rejection.</strong>
+      <p>Our 12-20 real testers run daily on their own Android phones for the full 14-day cycle, with proof delivered every day. 99.4% of apps we test are approved on the first attempt, and packages come with a 100% refund guarantee.</p>
+      <a class="btn btn-primary" href="/#pricing">See packages</a>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container footer-bottom">
+    <p>© 2026 Closed Testing Crew. Not affiliated with Google LLC. Google Play is a trademark of Google LLC. We provide testing services only — approval decisions are made solely by Google.</p>
+  </div>
+</footer>
+
+</body>
+</html>

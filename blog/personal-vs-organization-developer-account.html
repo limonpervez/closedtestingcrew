@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-B2X7WKJ270"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-B2X7WKJ270');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal vs Organization Google Play Developer Account: Which Do You Need? — Closed Testing Crew</title>
+<meta name="description" content="Personal accounts face the 12-tester / 14-day closed testing requirement, organization accounts don't. Here's how to decide which account type is right for you, and what each actually costs in time and money.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Closed Testing Crew">
+<meta property="og:title" content="Personal vs Organization Google Play Developer Account: Which Do You Need?">
+<meta property="og:description" content="How the two account types differ, and why one skips the closed testing requirement entirely.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="../assets/favicon-192.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="/" aria-label="Closed Testing Crew home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><rect x="6" y="2" width="12" height="20" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M9.5 12.5l2 2 3.5-4" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <span>Closed&nbsp;Testing&nbsp;<span class="brand-num">Crew</span></span>
+    </a>
+    <a class="btn btn-outline btn-sm nav-back" href="/blog/">All posts</a>
+  </div>
+</header>
+
+<main class="section">
+  <div class="container container-narrow legal">
+    <h1>Personal vs Organization Google Play Developer Account: Which Do You Need?</h1>
+
+    <p>Before you even get to closed testing, Google Play makes you choose an account type: personal or organization. That choice quietly decides whether you'll spend two weeks running a closed test at all. Here's what actually separates them, and how to pick correctly the first time, since switching later isn't simple.</p>
+
+    <h2>The core difference</h2>
+    <p>A <strong>personal account</strong> is registered to an individual. Since late 2023, every new personal account must complete a closed test, minimum 12 testers, opted in continuously for 14 days, before it can publish anything to Production.</p>
+    <p>An <strong>organization account</strong> is registered to a legal business entity (an LLC, a registered company, a nonprofit) and is exempt from the closed testing requirement. Organization accounts can publish directly to Production once approved, no 12-tester cycle required.</p>
+
+    <h2>Why the requirement exists for personal accounts</h2>
+    <p>Google added the closed testing requirement to cut down on low-quality and spam apps flooding the Play Store from easily created personal accounts. Organization accounts require business verification (a registered legal entity, often a D-U-N-S number or local equivalent), which is a higher bar to clear and functions as its own quality filter, so Google doesn't layer the testing requirement on top of it.</p>
+
+    <h2>What each account actually costs you</h2>
+    <ul>
+      <li><strong>Personal account:</strong> $25 one-time registration fee. No business registration needed. But you must budget 14+ days and either recruit 12+ real testers yourself or pay a service to handle it, plus the ongoing effort of managing that cycle.</li>
+      <li><strong>Organization account:</strong> The $25 registration fee, plus the cost and time of legally registering a business entity if you don't already have one (this varies enormously by country, from same-day online registration to a multi-week process). Business verification itself can take days to a couple of weeks. No closed testing cycle required afterward.</li>
+    </ul>
+    <p>In practice, for most solo developers and first-time publishers, a personal account with a paid or DIY closed test ends up faster overall than registering a business purely to skip 14 days, unless you already have a registered business or were planning to form one anyway.</p>
+
+    <h2>When an organization account makes sense</h2>
+    <ul>
+      <li>You already run a registered business, freelance company, or studio.</li>
+      <li>You're publishing multiple apps and want to skip the 14-day cycle for every future release, not just this one.</li>
+      <li>You plan to add team members, use Play Console's organization-level permissions, or eventually transfer the account to a company structure.</li>
+      <li>You have time to spare for business verification but not for 14 days of active testing, some verification processes move faster than a full closed test cycle in certain countries.</li>
+    </ul>
+
+    <h2>When a personal account makes sense</h2>
+    <ul>
+      <li>You're a solo developer testing an idea and don't want to register a business yet.</li>
+      <li>You don't have a registered business entity and forming one where you live is slow, expensive, or requires paperwork you're not ready for.</li>
+      <li>You're fine budgeting 14 days for testing, especially if you offload the tester recruitment itself.</li>
+    </ul>
+
+    <h2>Can you switch later?</h2>
+    <p>Google does not offer a simple in-place conversion from personal to organization on the same account. In practice, developers who want to move to an organization structure typically set up a new organization account (which involves its own $25 fee and business verification) and transfer apps over, which is its own process with its own friction. It's worth deciding your account type deliberately upfront rather than treating it as easily reversible later.</p>
+
+    <h2>If you're going the personal-account route</h2>
+    <p>Our <a href="/blog/google-play-closed-testing-setup-guide">step-by-step setup guide</a> walks through creating the account and configuring your first closed testing track. And if 12-20 real, continuous testers for 14 days sounds like more coordination than you want to take on solo, that's exactly what we do: real people on real daily-driver phones, daily proof in a private WhatsApp group, and a 100% refund if Google doesn't grant Production access.</p>
+
+    <div class="post-cta">
+      <strong>Going the personal-account route?</strong>
+      <p>Skip recruiting and managing 12+ testers yourself. We handle the full 14-day cycle with real testers and daily proof. Packages start at $19.99.</p>
+      <a class="btn btn-primary" href="/#pricing">See packages</a>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container footer-bottom">
+    <p>© 2026 Closed Testing Crew. Not affiliated with Google LLC. Google Play is a trademark of Google LLC. We provide testing services only — approval decisions are made solely by Google.</p>
+  </div>
+</footer>
+
+</body>
+</html>

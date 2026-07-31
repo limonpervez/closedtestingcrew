@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-B2X7WKJ270"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-B2X7WKJ270');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Your Google Play Closed Testing Days Aren't Counting (Every Cause + Fix) — Closed Testing Crew</title>
+<meta name="description" content="Stuck at the same day count for a week? Here's every reason Google Play's 12-tester / 14-day closed testing counter stalls or resets, and exactly how to fix each one.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Closed Testing Crew">
+<meta property="og:title" content="Why Your Google Play Closed Testing Days Aren't Counting">
+<meta property="og:description" content="Every reason the 12-tester / 14-day counter stalls or resets, and how to fix each one.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="../assets/favicon-192.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="/" aria-label="Closed Testing Crew home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><rect x="6" y="2" width="12" height="20" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M9.5 12.5l2 2 3.5-4" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <span>Closed&nbsp;Testing&nbsp;<span class="brand-num">Crew</span></span>
+    </a>
+    <a class="btn btn-outline btn-sm nav-back" href="/blog/">All posts</a>
+  </div>
+</header>
+
+<main class="section">
+  <div class="container container-narrow legal">
+    <h1>Why Your Google Play Closed Testing Days Aren't Counting</h1>
+
+    <p>You check the Play Console every morning, and the number just won't move: still "day 6 of 14," still 9 testers instead of 12. Nothing in the Console tells you why. This is the single most common complaint from developers running their own closed test, so here's every real cause, in the order we see them most often, with the fix for each.</p>
+
+    <h2>1. Your tester count dropped below 12, even briefly</h2>
+    <p>Google doesn't just check that 12 people opted in once. It looks for 12 testers <strong>opted in continuously</strong> across the window. If even one tester leaves the program, uninstalls, or has their opt-in expire and you drop to 11 for even a day, most developers report the continuous streak resets rather than pausing.</p>
+    <p><strong>Fix:</strong> Recruit 14-16 testers, not exactly 12, so you have a buffer. Check your tester count in the Play Console daily during the first week, when people are most likely to forget or uninstall out of curiosity.</p>
+
+    <h2>2. Testers opted in but never opened the app</h2>
+    <p>An opt-in link click isn't the same as usage. Google's rejection emails specifically cite testers who "did not engage" with the app. If half your 12 testers accepted the invite and never launched the app, Google can treat them as not actually testing, which functionally shrinks your active tester count below the threshold even though the Console still shows 12 opted in.</p>
+    <p><strong>Fix:</strong> Don't just send the opt-in link and hope. Follow up and confirm each tester actually opened the app on day one, and ask for a screenshot or a one-line status update every few days.</p>
+
+    <h2>3. You changed the package name or created a new release track</h2>
+    <p>Switching your app's package name, or accidentally creating a second closed testing track instead of continuing the first one, starts your 14-day clock over. This happens more than you'd think when developers experiment with a second internal or closed track and don't realize the Production application only looks at the primary closed track's history.</p>
+    <p><strong>Fix:</strong> Pick one closed testing track before you start recruiting, and keep every build on that same track for the full 14 days.</p>
+
+    <h2>4. Emulators or device-farm testers get filtered out</h2>
+    <p>If some of your "testers" are running the app on emulators, cloud device farms, or freshly wiped test-only phones, Google's systems appear to discount or flag that activity rather than counting it toward your 12. Your Console might show 12 testers opted in while your real, countable engagement is closer to 7 or 8. Read more on this in our post on <a href="/blog/emulator-testers-google-play-ban">whether emulator testers get you banned</a>.</p>
+    <p><strong>Fix:</strong> Use real people on real, previously-used Android phones. No emulators, no factory-reset "burner" devices, no cloud device farms.</p>
+
+    <h2>5. You're checking the wrong number</h2>
+    <p>The Play Console shows several counts that look similar but mean different things: testers opted in, testers who installed, and active testers. Developers sometimes read the "opted in" number as their progress toward Production readiness, when the number that actually matters is closer to daily active engagement across the full 14 days.</p>
+    <p><strong>Fix:</strong> Don't rely on a single number. Track daily activity per tester in a spreadsheet or a group chat so you know your real, sustained count at any point, not just the headline figure in the Console.</p>
+
+    <h2>6. Google is still processing recent changes</h2>
+    <p>Play Console data can lag by 24-48 hours. If you just added testers or pushed a new build, the counter may look stalled simply because Google hasn't finished processing the update yet, not because anything is actually wrong.</p>
+    <p><strong>Fix:</strong> Give it two full days before assuming something broke. Change one variable at a time so you can tell what actually caused a stall versus normal processing delay.</p>
+
+    <h2>The pattern behind all six causes</h2>
+    <p>Every cause above comes down to the same thing: Google is trying to verify that 12 real people used your app, in a sustained way, for two full weeks. Anything that makes that verification ambiguous, a dropped tester, an unopened app, a track switch, an emulator, gets treated conservatively. The safest path is redundancy (more testers than the minimum) and consistency (real usage, every day, on the same track, on real devices).</p>
+
+    <h2>Skip the guesswork</h2>
+    <p>This is exactly the operational headache we built the service to remove. 12-20 real testers on their own daily-driver Android phones stay active every single day of your 14-day cycle, on one track, with no emulators and no drop-offs, and you get daily proof of it in a private WhatsApp group instead of squinting at Console numbers wondering what changed.</p>
+
+    <div class="post-cta">
+      <strong>Tired of watching the counter stall?</strong>
+      <p>We run the full 14 days for you with real testers and daily proof. Packages start at $19.99, with a 100% refund if Google doesn't approve.</p>
+      <a class="btn btn-primary" href="/#pricing">See packages</a>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container footer-bottom">
+    <p>© 2026 Closed Testing Crew. Not affiliated with Google LLC. Google Play is a trademark of Google LLC. We provide testing services only — approval decisions are made solely by Google.</p>
+  </div>
+</footer>
+
+</body>
+</html>
