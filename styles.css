@@ -658,6 +658,33 @@ html.js .reveal.in { opacity: 1; transform: none; }
   .quote-lead { grid-row: auto; }
 }
 
+/* comparison table: stacked rows on mobile, both columns always visible */
+@media (max-width: 720px) {
+  .compare { min-width: 0; }
+  .compare thead { display: none; }
+  .compare tbody tr { display: block; padding: 1.05rem 1.1rem 1.15rem; }
+  .compare tbody th {
+    display: block; width: auto;
+    padding: 0; margin-bottom: 0.6rem;
+    font-size: 1rem;
+  }
+  .compare tbody td { display: block; padding: 0; }
+  .compare tbody .cell-them { margin-bottom: 0.6rem; }
+  .compare tbody .cell-us {
+    background: oklch(97.5% 0.02 155 / 0.55);
+    border-left: 0; border-radius: var(--r-sm);
+    padding: 0.55rem 0.7rem 0.65rem;
+  }
+  .cell-them::before, .compare tbody .cell-us::before {
+    content: "AUTOMATED BOTS";
+    display: block;
+    font-family: var(--font-mono); font-size: 0.62rem; font-weight: 600;
+    letter-spacing: 0.08em; color: var(--ink-3);
+    margin-bottom: 0.2rem;
+  }
+  .compare tbody .cell-us::before { content: "CLOSED TESTING CREW"; color: var(--accent-deep); }
+}
+
 /* nav collapses earlier than the rest: the longer wordmark needs room */
 @media (max-width: 940px) {
   .nav-links, .nav-cta { display: none; }
