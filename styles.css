@@ -539,9 +539,23 @@ p { text-wrap: pretty; }
 .post-list { border-top: 1.5px solid var(--ink); max-width: 780px; }
 .post-item { border-bottom: 1px solid var(--rule); padding-block: 1.6rem; }
 .post-item a { text-decoration: none; display: block; }
+.post-item-thumb {
+  width: 100%; aspect-ratio: 1200 / 630; object-fit: cover;
+  border: 1px solid var(--rule); border-radius: var(--r-sm);
+  margin-bottom: 0.9rem;
+}
 .post-item h3 { font-size: 1.35rem; font-weight: 700; }
 .post-item a:hover h3 { color: var(--accent-deep); }
 .post-item p { margin-top: 0.5rem; color: var(--ink-2); font-size: 0.95rem; max-width: 62ch; }
+
+/* ---------- blog post hero image ---------- */
+.post-hero {
+  width: 100%; aspect-ratio: 1200 / 630; object-fit: cover;
+  border: 1.5px solid var(--ink);
+  border-radius: var(--r-md);
+  box-shadow: 6px 6px 0 0 var(--accent-tint);
+  margin: 1.6rem 0 2.2rem;
+}
 .post-cta {
   margin-top: 2.8rem;
   border: 1.5px dashed var(--accent);
