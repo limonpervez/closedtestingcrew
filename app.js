@@ -145,17 +145,10 @@ faqs.forEach(d =>
   })
 );
 
-// ---------- chat toast ----------
-const toast = document.getElementById('chat-toast');
-const fab = document.getElementById('chat-fab');
-
-function toggleChat(force) {
-  toast.hidden = force !== undefined ? !force : !toast.hidden;
+// ---------- live chat (Tawk.to; its own bubble renders bottom-right) ----------
+function openChat() {
+  if (typeof Tawk_API !== 'undefined' && Tawk_API.maximize) Tawk_API.maximize();
+  else open(`https://wa.me/${WA_NUMBER}`, '_blank', 'noopener');
 }
-fab.addEventListener('click', () => toggleChat());
-document.getElementById('chat-footer')?.addEventListener('click', () => {
-  toggleChat(true);
-  toast.scrollIntoView({ block: 'nearest' });
-});
-document.getElementById('chat-cta')?.addEventListener('click', () => toggleChat(true));
-document.addEventListener('keydown', e => { if (e.key === 'Escape') toggleChat(false); });
+document.getElementById('chat-footer')?.addEventListener('click', openChat);
+document.getElementById('chat-cta')?.addEventListener('click', openChat);
