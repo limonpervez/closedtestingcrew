@@ -128,13 +128,41 @@ document.getElementById('order-form').addEventListener('submit', e => {
   open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(body)}`, '_blank', 'noopener');
 });
 
-document.getElementById('order-email').addEventListener('click', () => {
+// "Send by email" posts the order to our inbox directly (no mail app
+// needed on the visitor's device); falls back to mailto if the network
+// request fails.
+const EMAIL_ENDPOINT = 'https://formsubmit.co/ajax/limonpervez@gmail.com';
+
+document.getElementById('order-email').addEventListener('click', async () => {
   if (!validateOrder()) return;
+  const btn = document.getElementById('order-email');
+  const val = id => document.getElementById(id).value.trim();
   const { planText, body } = orderMessage();
-  track('generate_lead', { method: 'email', plan: planSelect.value, value: PLAN_PRICES[planSelect.value], currency: 'USD' });
-  location.href = 'mailto:hello@closedtestingcrew.com'
-    + '?subject=' + encodeURIComponent('New testing order: ' + planText)
-    + '&body=' + encodeURIComponent(body);
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+  try {
+    const res = await fetch(EMAIL_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        _subject: 'New testing order: ' + planText,
+        package: planText,
+        name: val('of-name'),
+        phone: val('of-phone'),
+        email: val('of-email'),
+        app: val('of-app')
+      })
+    });
+    if (!res.ok) throw new Error('send failed');
+    track('generate_lead', { method: 'email', plan: planSelect.value, value: PLAN_PRICES[planSelect.value], currency: 'USD' });
+    btn.textContent = 'Sent ✓ We reply within the hour';
+  } catch {
+    btn.disabled = false;
+    btn.textContent = 'Send by email';
+    location.href = 'mailto:hello@closedtestingcrew.com'
+      + '?subject=' + encodeURIComponent('New testing order: ' + planText)
+      + '&body=' + encodeURIComponent(body);
+  }
 });
 
 // ---------- FAQ: close others when one opens ----------

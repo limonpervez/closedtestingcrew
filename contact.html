@@ -146,12 +146,34 @@ document.getElementById('contact-form').addEventListener('submit', e => {
   track('generate_lead', { method: 'contact_whatsapp' });
   open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message())}`, '_blank', 'noopener');
 });
-document.getElementById('contact-email').addEventListener('click', () => {
+document.getElementById('contact-email').addEventListener('click', async () => {
   if (!validate()) return;
-  track('generate_lead', { method: 'contact_email' });
-  location.href = 'mailto:hello@closedtestingcrew.com?subject='
-    + encodeURIComponent('Question from ' + document.getElementById('cf-name').value.trim())
-    + '&body=' + encodeURIComponent(message());
+  const btn = document.getElementById('contact-email');
+  const val = id => document.getElementById(id).value.trim();
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+  try {
+    const res = await fetch('https://formsubmit.co/ajax/limonpervez@gmail.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        _subject: 'Question from ' + val('cf-name'),
+        name: val('cf-name'),
+        phone: val('cf-phone'),
+        email: val('cf-email'),
+        message: val('cf-msg')
+      })
+    });
+    if (!res.ok) throw new Error('send failed');
+    track('generate_lead', { method: 'contact_email' });
+    btn.textContent = 'Sent ✓ We reply within the hour';
+  } catch {
+    btn.disabled = false;
+    btn.textContent = 'Send by email';
+    location.href = 'mailto:hello@closedtestingcrew.com?subject='
+      + encodeURIComponent('Question from ' + val('cf-name'))
+      + '&body=' + encodeURIComponent(message());
+  }
 });
 </script>
 
