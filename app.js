@@ -131,7 +131,7 @@ document.getElementById('order-form').addEventListener('submit', e => {
 // "Send by email" posts the order to our inbox directly (no mail app
 // needed on the visitor's device); falls back to mailto if the network
 // request fails.
-const EMAIL_ENDPOINT = 'https://formsubmit.co/ajax/1271e0a89bdbe48521d5327e4434438d';
+const EMAIL_ENDPOINT = 'https://formsubmit.co/ajax/hello@closedtestingcrew.com';
 
 document.getElementById('order-email').addEventListener('click', async () => {
   if (!validateOrder()) return;
