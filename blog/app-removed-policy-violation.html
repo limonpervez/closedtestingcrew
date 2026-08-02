@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-B2X7WKJ270"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-B2X7WKJ270');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>App Removed From Google Play for Policy Violation? What to Do Next — Closed Testing Crew</title>
+<meta name="description" content="A takedown notice doesn't have to be the end of your app. Here's how to read Google's removal reason, fix the actual problem, and get your app back on the Store.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Closed Testing Crew">
+<meta property="og:title" content="App Removed From Google Play for Policy Violation? What to Do Next">
+<meta property="og:description" content="How to read Google's removal reason, fix the actual problem, and get your app back on the Store.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="../assets/favicon-192.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What happens when Google Play removes an app for a policy violation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The app is taken down from the Store immediately, existing users can usually keep it installed but it stops appearing in search and can't be newly downloaded. You receive an email citing the specific policy violated."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I republish an app after it's removed for a policy violation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, in most cases. Fix the specific issue Google cited, then submit an update or appeal through the Play Console. Repeated or severe violations across multiple apps can affect your entire developer account, not just the one app."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="/" aria-label="Closed Testing Crew home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><rect x="6" y="2" width="12" height="20" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M9.5 12.5l2 2 3.5-4" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <span>Closed&nbsp;Testing&nbsp;<span class="brand-num">Crew</span></span>
+    </a>
+    <a class="btn btn-outline btn-sm nav-back" href="/blog/">All posts</a>
+  </div>
+</header>
+
+<main class="section">
+  <div class="container container-narrow legal">
+    <h1>App Removed From Google Play for Policy Violation? What to Do Next</h1>
+
+    <p>A removal notice after you've already launched hits differently than a rejection during closed testing. You had real users, maybe real reviews, and now the app is gone from search overnight. The good news: removals are usually fixable, and Google tells you exactly why, even if the email reads a little like boilerplate at first glance.</p>
+
+    <h2>Read the actual policy cited, not just the headline</h2>
+    <p>Google's removal emails name a specific policy category: Deceptive Behavior, Permissions, User Data, Intellectual Property, Restricted Content, or several dozen others. The headline in the email is often generic ("Policy Violation: User Data"), but the body usually links to the exact sub-policy and sometimes flags the specific screen, permission, or SDK involved. Don't skim this, it's the difference between guessing at a fix and actually fixing the right thing.</p>
+
+    <h2>The most common removal reasons we see</h2>
+    <ul>
+      <li><strong>Permissions that don't match app function.</strong> Requesting location, contacts, or camera access without a clear in-app feature that needs it. Google's automated scanners flag this pattern aggressively.</li>
+      <li><strong>Data Safety form mismatch.</strong> The declared data practices don't match what the app or its SDKs actually do. See our full walkthrough of <a href="/blog/data-safety-form-guide">getting the Data Safety form right</a> to avoid this from the start.</li>
+      <li><strong>Misleading claims.</strong> Store listing or in-app claims that overstate functionality ("#1 app," unverified health claims, fake urgency like countdown timers with no real deadline).</li>
+      <li><strong>Intellectual property complaints.</strong> A third party (often a brand or another developer) files a complaint about your app name, icon, or content. These can move fast and sometimes with less back-and-forth than other categories.</li>
+      <li><strong>Malware or deceptive behavior flags.</strong> Sometimes triggered by an ad SDK or third-party library behaving badly without your direct knowledge, which is why vetting SDKs before adding them matters.</li>
+    </ul>
+
+    <h2>Fixing it: the actual steps</h2>
+    <ol>
+      <li><strong>Identify the exact cause</strong> from the removal email, not your best guess at what might have caused it.</li>
+      <li><strong>Fix the app itself.</strong> Remove the offending permission, correct the misleading copy, update the Data Safety declaration, whatever the specific issue requires. Cosmetic fixes that don't address the actual cited policy rarely work.</li>
+      <li><strong>Submit an updated build or an appeal</strong> through the Play Console, depending on what Google's notice instructs. Some removals require a new app version; others just need a corrected declaration or listing update.</li>
+      <li><strong>Reference the specific policy in your response.</strong> If appealing, explain precisely what changed and why it now complies, citing the same policy language Google used.</li>
+      <li><strong>Wait for re-review,</strong> which typically takes anywhere from a few hours to several days depending on the violation type and current review volume.</li>
+    </ol>
+
+    <h2>When it's bigger than one app</h2>
+    <p>A single app removal is usually contained to that app. But repeated violations, or a severe one like deceptive behavior or malware, can escalate to account-level action, the kind we cover in <a href="/blog/suspended-developer-account-recovery">what actually gets developer accounts suspended</a>. If you publish multiple apps, treat every removal notice as worth fixing properly and quickly, not just for that one app's sake.</p>
+
+    <h2>Preventing the next one</h2>
+    <p>Most removals trace back to the same handful of preventable causes: requesting permissions you don't clearly need, an inaccurate Data Safety form, or an SDK you added without checking what it actually does. Building good habits here from day one, accurate declarations, minimal permissions, vetted third-party libraries, saves you this exact headache down the line. It's the same discipline that keeps a closed testing cycle clean in the first place, covered in our <a href="/blog/pass-google-play-closed-testing">guide to passing closed testing on the first attempt</a>.</p>
+
+    <div class="post-cta">
+      <strong>Getting a new app through closed testing the right way?</strong>
+      <p>Real testers on real daily-driver phones, no shortcuts that could come back to haunt you later. Packages start at $19.99, with a 100% refund if Google doesn't approve.</p>
+      <a class="btn btn-primary" href="/#pricing">See packages</a>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container footer-bottom">
+    <p>© 2026 Closed Testing Crew. Not affiliated with Google LLC. Google Play is a trademark of Google LLC. We provide testing services only — approval decisions are made solely by Google.</p>
+  </div>
+</footer>
+
+</body>
+</html>

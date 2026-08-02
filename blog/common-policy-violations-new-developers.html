@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-B2X7WKJ270"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-B2X7WKJ270');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Common Google Play Policy Violations First-Time Developers Don't See Coming — Closed Testing Crew</title>
+<meta name="description" content="Most policy violations aren't intentional. Here are the Google Play policies that quietly trip up first-time developers, and how to check your app against each one before you publish.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Closed Testing Crew">
+<meta property="og:title" content="Common Google Play Policy Violations First-Time Developers Don't See Coming">
+<meta property="og:description" content="The Google Play policies that quietly trip up first-time developers, and how to check your app against each one.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="../assets/favicon-192.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What are the most common Google Play policy violations for new developers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Requesting permissions the app doesn't clearly need, misleading or exaggerated store listing claims, inaccurate Data Safety declarations, and using third-party SDKs without understanding what data or behavior they add to the app."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can an unintentional policy violation still get my app rejected or removed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Google's enforcement doesn't distinguish between intentional and accidental violations. A permission left over from a removed feature, or an SDK's data collection you weren't aware of, can trigger the same rejection or removal as a deliberate violation."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="/" aria-label="Closed Testing Crew home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><rect x="6" y="2" width="12" height="20" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M9.5 12.5l2 2 3.5-4" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <span>Closed&nbsp;Testing&nbsp;<span class="brand-num">Crew</span></span>
+    </a>
+    <a class="btn btn-outline btn-sm nav-back" href="/blog/">All posts</a>
+  </div>
+</header>
+
+<main class="section">
+  <div class="container container-narrow legal">
+    <h1>Common Google Play Policy Violations First-Time Developers Don't See Coming</h1>
+
+    <p>Nobody sets out to violate Google Play's policies. The vast majority of rejections and removals we see traced back to something a first-time developer never even thought to check, a leftover permission, an SDK that quietly collects more than expected, a description that sounded fine until Google's automated scanners read it literally. Here's the list of policies that catch people off guard most often, and how to actually check your own app against each.</p>
+
+    <h2>1. Permissions that outlive their feature</h2>
+    <p>You build a location-sharing feature, decide against it, remove the UI, but forget the <code>ACCESS_FINE_LOCATION</code> permission in your manifest. Google's review flags apps that request permissions with no corresponding visible feature. <strong>Check:</strong> open your manifest and account for every single permission with a specific feature a user can see and use.</p>
+
+    <h2>2. Overstated or unverifiable claims</h2>
+    <p>"100% secure," "guaranteed results," "#1 rated," anything you can't actually back up gets treated as a Deceptive Behavior policy risk, not just a marketing exaggeration. <strong>Check:</strong> read your store listing as if you were the one deciding whether to approve it. Anything you'd ask "can you prove that?" about needs softening or removal.</p>
+
+    <h2>3. Data Safety declarations that don't match reality</h2>
+    <p>Covered in full in our <a href="/blog/data-safety-form-guide">Data Safety form walkthrough</a>, but worth repeating here: this is one of the single most common causes of policy trouble, specifically because it's so easy to under-declare without realizing it. Every ad SDK, analytics tool, and crash reporter you've integrated collects something, and it counts toward your declaration whether you remembered it or not.</p>
+
+    <h2>4. Ads that interrupt core functionality</h2>
+    <p>Full-screen ads that appear during gameplay-critical moments, ads that mimic system dialogs or buttons, or interstitials that are unusually difficult to close all fall under Google's Ads policy. <strong>Check:</strong> would a reasonable user describe your ad placement as tricking them into clicking, even accidentally? If yes, it needs to change.</p>
+
+    <h2>5. Content rating mismatches</h2>
+    <p>Answering the content rating questionnaire optimistically, understating violence, language, or mature themes to land a lower age rating, is a policy violation, not a gray area. <strong>Check:</strong> answer every question based on the most mature content actually present anywhere in the app, including user-generated content if your app has any.</p>
+
+    <h2>6. Third-party SDKs behaving badly on your behalf</h2>
+    <p>You're responsible for what every SDK in your app does, even ones from reputable providers. Ad networks and analytics tools occasionally get flagged for aggressive data collection or deceptive ad behavior, and it's your app that gets the policy strike, not the SDK vendor. <strong>Check:</strong> periodically review your dependencies for updates and check whether any SDK vendor has had recent policy compliance issues reported publicly.</p>
+
+    <h2>7. Impersonation, even accidental</h2>
+    <p>An app icon, name, or color scheme that resembles an existing popular app or brand too closely, even without intending to copy it, can trigger an Intellectual Property or Impersonation flag. <strong>Check:</strong> search your exact app name and a visual description of your icon on Google before you publish. If something close already exists, differentiate deliberately.</p>
+
+    <h2>8. Manipulated engagement, including well-intentioned tester shortcuts</h2>
+    <p>This one's specific to the closed testing phase: using emulators, device farms, or any service that fakes real usage to satisfy the 12-tester requirement is itself a policy violation, not just a risky shortcut. We cover exactly what gets detected in <a href="/blog/emulator-testers-google-play-ban">do emulator testers get you banned</a>.</p>
+
+    <h2>The pattern across all eight</h2>
+    <p>Almost none of these require malicious intent. They require an app that changed over time (features removed, SDKs added) without every downstream declaration keeping pace. The fix, in every case, is the same habit: treat your store listing, permissions, and Data Safety form as living documents that need to match your app's current actual behavior, not what it did when you first filled them out.</p>
+
+    <div class="post-cta">
+      <strong>Get your closed testing cycle right the first time.</strong>
+      <p>Real testers on real daily-driver phones, no emulators, no shortcuts that could trigger a policy flag later. Packages start at $19.99, with a 100% refund if Google doesn't approve.</p>
+      <a class="btn btn-primary" href="/#pricing">See packages</a>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container footer-bottom">
+    <p>© 2026 Closed Testing Crew. Not affiliated with Google LLC. Google Play is a trademark of Google LLC. We provide testing services only — approval decisions are made solely by Google.</p>
+  </div>
+</footer>
+
+</body>
+</html>

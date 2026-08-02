@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-B2X7WKJ270"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-B2X7WKJ270');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google Play vs Apple App Store: What's Different for a First-Time Developer — Closed Testing Crew</title>
+<meta name="description" content="Publishing on both platforms for the first time? Here's exactly where Google Play and the Apple App Store diverge, from review process to cost to the closed testing requirement Apple doesn't have.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Closed Testing Crew">
+<meta property="og:title" content="Google Play vs Apple App Store: What's Different for a First-Time Developer">
+<meta property="og:description" content="Where Google Play and the Apple App Store actually diverge for a first-time publisher.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="../assets/favicon-192.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does Apple's App Store have a closed testing requirement like Google Play?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not in the same fixed way. Apple offers TestFlight for beta testing, but it isn't a mandatory minimum-tester, minimum-day requirement before release the way Google Play's 12-tester, 14-day rule is for new personal developer accounts."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which is faster to publish on for the first time, Google Play or the App Store?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on your account type. A new personal Google Play account faces the mandatory 14-day closed testing window, while Apple's review is typically 24-48 hours but has no fixed testing requirement, making Apple often faster for a first release if your app is otherwise ready."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="/" aria-label="Closed Testing Crew home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><rect x="6" y="2" width="12" height="20" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M9.5 12.5l2 2 3.5-4" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <span>Closed&nbsp;Testing&nbsp;<span class="brand-num">Crew</span></span>
+    </a>
+    <a class="btn btn-outline btn-sm nav-back" href="/blog/">All posts</a>
+  </div>
+</header>
+
+<main class="section">
+  <div class="container container-narrow legal">
+    <h1>Google Play vs Apple App Store: What's Different for a First-Time Developer</h1>
+
+    <p>If you're building your first app and planning to publish on both platforms, the differences between Google Play and the Apple App Store aren't just cosmetic. They affect your timeline, your budget, and in Google's case, whether you're required to run a multi-week testing cycle before anyone outside your test group can download your app at all. Here's what actually differs, based on what trips up first-time developers most often.</p>
+
+    <h2>Account setup and cost</h2>
+    <p><strong>Google Play:</strong> A one-time $25 fee for a personal developer account. Identity verification via government ID, usually clears within 48 hours.</p>
+    <p><strong>Apple App Store:</strong> $99 per year for an individual account, billed annually for as long as you want apps live on the Store. Apple also requires identity verification, and organization accounts need a D-U-N-S number, similar to Google's organization account requirement.</p>
+    <p>Apple costs more upfront and every year after. Google is cheaper to start but the ongoing cost shows up differently, in the testing requirement's time cost rather than a subscription fee.</p>
+
+    <h2>The testing requirement: this is the big one</h2>
+    <p>This is where the two platforms diverge most sharply for first-time developers. Google Play requires new personal accounts to run a closed test: minimum 12 testers, opted in continuously, for 14 days, before Production access is granted. There's no equivalent hard requirement on Apple's side. Apple has TestFlight for beta distribution, and you can absolutely use it, but it's optional, not a gate you must pass before your first public release.</p>
+    <p>Practically, this means a new Google Play developer is looking at a minimum two-week runway before their app can go live, plus whatever time it takes to recruit and manage testers, which we cover in detail in <a href="/blog/how-long-does-closed-testing-take">how long closed testing actually takes</a>. An Apple developer publishing the same app for the first time can, in principle, go from finished build to live on the Store in a matter of days.</p>
+
+    <h2>Review process and timeline</h2>
+    <p><strong>Google Play:</strong> Initial review for the closed testing track itself is usually quick, often same-day. The real bottleneck is the mandatory 14 days plus the Production access review afterward, which typically takes hours to a few days once your testing requirement is met.</p>
+    <p><strong>Apple App Store:</strong> Human reviewers evaluate every submission, typically within 24-48 hours, sometimes faster. Apple's review tends to be stricter on UI polish, functionality completeness, and adherence to Human Interface Guidelines, developers commonly report more rejections for "incomplete" or "placeholder" content than they do on Google Play.</p>
+
+    <h2>What each platform is stricter about</h2>
+    <p>Google Play leans heavily on data privacy and permissions scrutiny (see our <a href="/blog/data-safety-form-guide">Data Safety form walkthrough</a> for how detailed this gets), plus the closed testing authenticity checks that flag emulator or bot activity, covered in <a href="/blog/emulator-testers-google-play-ban">what happens when Google detects fake testers</a>.</p>
+    <p>Apple leans harder on app completeness and design quality: broken links, placeholder text, crashes during review, and UI that doesn't follow their design conventions are common rejection reasons that Google Play is comparatively more lenient about.</p>
+
+    <h2>Publishing strategy for a first-time developer</h2>
+    <p>If you're launching on both platforms and want your app live as fast as possible, a common approach is to start the Google Play closed testing clock first, since it's the longer, fixed-duration requirement, then work on the Apple submission in parallel. That way both platforms' timelines overlap instead of stacking end to end.</p>
+    <p>If you only have bandwidth for one platform first, and speed to market matters more than reach, Apple's shorter review-only process gets you live faster. If you want the Play Store's larger global device reach and are willing to invest the two weeks upfront, Google is the better long-term bet for many app categories, especially outside the US.</p>
+
+    <div class="post-cta">
+      <strong>Don't let the 14 days become 5 weeks.</strong>
+      <p>Recruiting and managing 12+ reliable testers yourself is where most Google Play timelines blow up. We handle it: 12-20 real testers on daily-driver phones, active from day one. Packages start at $19.99.</p>
+      <a class="btn btn-primary" href="/#pricing">See packages</a>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container footer-bottom">
+    <p>© 2026 Closed Testing Crew. Not affiliated with Google LLC. Google Play is a trademark of Google LLC. We provide testing services only — approval decisions are made solely by Google.</p>
+  </div>
+</footer>
+
+</body>
+</html>

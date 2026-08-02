@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-B2X7WKJ270"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-B2X7WKJ270');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google Play Console Upload Errors and How to Fix Them — Closed Testing Crew</title>
+<meta name="description" content="Bundle rejected, version code conflict, signing key mismatch. Here are the most common Google Play Console upload errors first-time developers hit, and the actual fix for each.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Closed Testing Crew">
+<meta property="og:title" content="Google Play Console Upload Errors and How to Fix Them">
+<meta property="og:description" content="The most common Play Console upload errors, and the actual fix for each.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="../assets/favicon-192.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why does the Play Console reject my app bundle upload?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The most common reasons are a version code that isn't higher than your last upload, a signing key mismatch from switching build machines or keystores, uploading a debug build instead of a signed release build, or a target API level below Google's current minimum requirement."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a version code conflict in Google Play Console?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every upload needs a versionCode integer higher than the previous one, even for internal testing builds. Reusing or lowering a version code triggers an automatic rejection, since Google Play uses it to determine which build is newest."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="/" aria-label="Closed Testing Crew home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><rect x="6" y="2" width="12" height="20" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M9.5 12.5l2 2 3.5-4" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <span>Closed&nbsp;Testing&nbsp;<span class="brand-num">Crew</span></span>
+    </a>
+    <a class="btn btn-outline btn-sm nav-back" href="/blog/">All posts</a>
+  </div>
+</header>
+
+<main class="section">
+  <div class="container container-narrow legal">
+    <h1>Google Play Console Upload Errors and How to Fix Them</h1>
+
+    <p>You've built the app, you're ready to start your closed testing clock, and the Play Console throws an error at the exact moment you try to upload. It's one of the most common first-time-publisher headaches, and almost every one of these errors has a specific, fixable cause. Here's what each one actually means.</p>
+
+    <h2>"Version code X has already been used"</h2>
+    <p>Every build you upload, even internal testing builds, needs a <code>versionCode</code> integer strictly higher than every previous upload for that app, across every track. If you're re-uploading a build after fixing something minor, bump the version code even if the visible version name hasn't changed. Developers using automated build tools sometimes hit this when a CI pipeline doesn't auto-increment the code correctly.</p>
+
+    <h2>"Your app bundle contains a debuggable app"</h2>
+    <p>You've uploaded a debug build instead of a signed release build. In Android Studio, this usually means building via <strong>Build → Generate Signed Bundle/APK</strong> rather than the default run configuration, which produces a debuggable build meant only for local testing.</p>
+
+    <h2>"Upload failed: You uploaded an APK that was signed with a different certificate"</h2>
+    <p>This happens when you switch build machines, lose access to your original keystore, or your CI system uses a different signing configuration than your local one did originally. If you're using Play App Signing (the default and recommended option), Google manages the actual app signing key, but you still need a consistent upload key. Losing your upload key requires a formal key reset request through Play Console support, which can take several days, so back up your keystore file somewhere safe the moment you create it.</p>
+
+    <h2>"Your APK or Android App Bundle targets an API level that isn't supported"</h2>
+    <p>Google raises its minimum target API level requirement roughly once a year. If you started a project a while back and haven't touched the <code>targetSdkVersion</code> in your build config, you can hit this even on a routine update. Check the current requirement in Google's Play Console policy pages and update your target SDK version accordingly, which sometimes surfaces new deprecation warnings elsewhere in your code worth addressing at the same time.</p>
+
+    <h2>"This release is not compliant with the Google Play 64-bit requirement"</h2>
+    <p>All apps with native code must include 64-bit support alongside any 32-bit libraries. This usually comes up when a third-party native library (SDKs with native components, certain game engines) hasn't been updated to ship 64-bit binaries. Check whether a newer version of the offending SDK is available before assuming you need to rebuild everything from scratch.</p>
+
+    <h2>"App bundle must be signed" or generic signing errors</h2>
+    <p>Usually means the upload didn't go through your release signing configuration at all. Double check your <code>build.gradle</code> signing config block is correctly referenced in your release build type, and that the keystore path and passwords are valid on the machine actually producing the final upload.</p>
+
+    <h2>Upload succeeded, but the release won't roll out</h2>
+    <p>This is usually a completeness issue, not the upload itself: an incomplete store listing, a missing Data Safety declaration (see our <a href="/blog/data-safety-form-guide">full walkthrough</a>), or an unanswered content rating questionnaire. The Play Console will list exactly which section is blocking the rollout under the release's status.</p>
+
+    <h2>A quick pre-upload checklist to avoid most of these</h2>
+    <ol>
+      <li>Confirm you're building a signed release, not a debug build</li>
+      <li>Bump your version code higher than your last upload on every track</li>
+      <li>Keep your upload keystore backed up somewhere outside your local machine</li>
+      <li>Check your target SDK version against Google's current minimum before every major release</li>
+      <li>Complete your store listing and Data Safety form before your first upload attempt, not after</li>
+    </ol>
+
+    <p>Once your build actually uploads cleanly, the next hurdle for new personal accounts is the 12-tester, 14-day closed testing requirement itself, walked through start to finish in our <a href="/blog/google-play-closed-testing-setup-guide">complete setup guide</a>.</p>
+
+    <div class="post-cta">
+      <strong>Build uploaded, testers ready?</strong>
+      <p>Skip recruiting testers yourself. 12-20 real people on daily-driver Android phones run the full 14-day cycle for you. Packages start at $19.99, with a 100% refund if Google doesn't approve.</p>
+      <a class="btn btn-primary" href="/#pricing">See packages</a>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container footer-bottom">
+    <p>© 2026 Closed Testing Crew. Not affiliated with Google LLC. Google Play is a trademark of Google LLC. We provide testing services only — approval decisions are made solely by Google.</p>
+  </div>
+</footer>
+
+</body>
+</html>

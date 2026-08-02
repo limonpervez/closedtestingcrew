@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-B2X7WKJ270"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-B2X7WKJ270');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Publishing Your First Android App: A Realistic Week-by-Week Timeline — Closed Testing Crew</title>
+<meta name="description" content="From finished code to live on Google Play: a realistic, week-by-week timeline for publishing your first Android app, including the parts tutorials always skip.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Closed Testing Crew">
+<meta property="og:title" content="Publishing Your First Android App: A Realistic Week-by-Week Timeline">
+<meta property="og:description" content="A realistic, week-by-week timeline from finished code to live on Google Play.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="../assets/favicon-192.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How long does it take to publish a first Android app on Google Play?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Realistically 3-5 weeks from a finished app to live on Production, for a well-prepared first-time developer. This includes account setup, store listing preparation, the mandatory 14-day closed testing window, and the Production access review."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What takes the longest when publishing a first Android app?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The closed testing requirement itself. The 14 days are fixed by Google and can't be shortened, and recruiting and managing 12+ reliable testers around that fixed window is where most first-time developers lose the most additional time."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="/" aria-label="Closed Testing Crew home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><rect x="6" y="2" width="12" height="20" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M9.5 12.5l2 2 3.5-4" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <span>Closed&nbsp;Testing&nbsp;<span class="brand-num">Crew</span></span>
+    </a>
+    <a class="btn btn-outline btn-sm nav-back" href="/blog/">All posts</a>
+  </div>
+</header>
+
+<main class="section">
+  <div class="container container-narrow legal">
+    <h1>Publishing Your First Android App: A Realistic Week-by-Week Timeline</h1>
+
+    <p>Most tutorials show you how to build the app and stop right there, as if publishing is a five-minute afterthought. It isn't, especially not the first time. Here's what the actual calendar looks like from a finished, working app to live on Google Play Production, based on what real first-time developers report, not the optimistic version.</p>
+
+    <h2>Week 1: Account and listing setup</h2>
+    <p>Creating your developer account, paying the $25 fee, and waiting on identity verification (usually 24-48 hours) happens early in the week. In parallel, build out your store listing: description, screenshots, icon, feature graphic, and the policy items, content rating, Data Safety form, privacy policy. Our <a href="/blog/play-store-listing-checklist">full listing checklist</a> covers every piece. Most developers underestimate this step and end up finishing it hastily right before they want to start testing, which is backwards, do it first.</p>
+
+    <h2>Week 1-2: First upload and closed testing track setup</h2>
+    <p>Uploading your signed build for the first time often surfaces at least one issue, a signing mismatch, a version code conflict, a target SDK requirement you didn't know about. We cover the most common ones in <a href="/blog/play-console-upload-errors">Play Console upload errors and fixes</a>. Budget a few extra days here if this is genuinely your first Android release; it rarely goes perfectly smooth the first time.</p>
+    <p>Once your build is up, configure your closed testing track and start recruiting your 12+ testers. This is the step most first-time developers start too late, treating it as something to figure out after the app is ready, when it should start the moment you have a stable build.</p>
+
+    <h2>Weeks 2-4: The mandatory 14-day closed testing window</h2>
+    <p>This is the fixed, non-negotiable part of the timeline. Google requires at least 12 testers opted in continuously for 14 days before a new personal account can apply for Production access. In a best case, with testers ready and engaged from day one, this really is 14 days. In practice, it commonly stretches to 16-20+ days because of tester drop-off resetting the continuous-engagement streak, a pattern we cover in <a href="/blog/google-play-testing-counter-reset">why testing counters stall or reset</a>.</p>
+
+    <h2>Week 4-5: Production application and review</h2>
+    <p>Once your 14-day requirement is met, you'll answer a short application about how you recruited testers, what feedback you got, and what you changed. Fifteen to thirty minutes if you kept notes along the way. Google's review of your application and engagement data typically takes a few hours to a few days. If rejected, see our breakdown of <a href="/blog/production-access-rejected">every rejection reason and how to fix each one</a>, since a rejection here usually adds another 1-2 weeks for a corrected cycle.</p>
+
+    <h2>Realistic totals, three scenarios</h2>
+    <ul>
+      <li><strong>Best case:</strong> account and listing ready in advance, testers lined up before you even upload, zero drop-off, clean application. Roughly <strong>3 weeks</strong> total.</li>
+      <li><strong>Typical first-timer:</strong> some upload troubleshooting, moderate tester recruiting delay, a drop-off or two mid-cycle. Commonly <strong>4-6 weeks</strong> total.</li>
+      <li><strong>Rejected once:</strong> add another 10-14 days for a corrected second cycle. Realistically <strong>6-8 weeks</strong> total.</li>
+    </ul>
+
+    <h2>What actually compresses this timeline</h2>
+    <p>The 14 days themselves can't be shortened, full stop, anyone claiming otherwise is not being straight with you. But almost everything else on this timeline is under your control: preparing your listing before you need it, testing your upload process early so surprises don't cost you days, and most importantly, having your 12+ testers ready and reliable from day one instead of recruiting reactively. That last piece alone is usually the difference between a 3-week launch and a 6-week one.</p>
+
+    <div class="post-cta">
+      <strong>Skip the recruiting delay entirely.</strong>
+      <p>12-20 real testers on daily-driver Android phones, active from day one of your closed testing track. Daily proof in a private WhatsApp group, no drop-off risk. Packages start at $19.99, with a 100% refund if Google doesn't approve.</p>
+      <a class="btn btn-primary" href="/#pricing">See packages</a>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container footer-bottom">
+    <p>© 2026 Closed Testing Crew. Not affiliated with Google LLC. Google Play is a trademark of Google LLC. We provide testing services only — approval decisions are made solely by Google.</p>
+  </div>
+</footer>
+
+</body>
+</html>

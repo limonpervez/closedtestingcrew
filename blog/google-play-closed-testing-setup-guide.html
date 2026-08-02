@@ -93,7 +93,7 @@
 
     <h2>Step 2: Create your app in the Play Console</h2>
     <p>From the Console dashboard, click <strong>Create app</strong>. You'll set the app name (30 characters max), default language, whether it's an app or game, and free or paid. Note that free-to-paid cannot be changed after publishing, while paid-to-free can.</p>
-    <p>The Console then presents a long "Set up your app" checklist: content ratings questionnaire, target audience, data safety form, ads declaration, and more. You must finish this checklist before any release, including a closed test, can go live. Budget 1 to 2 hours for it. The <strong>data safety form</strong> deserves the most care: declare exactly what your app and its SDKs collect. Analytics and ad SDKs collect more than most developers realize, and mismatches between your declaration and your app's actual behavior are a leading cause of policy rejections later.</p>
+    <p>The Console then presents a long "Set up your app" checklist: content ratings questionnaire, target audience, data safety form, ads declaration, and more. You must finish this checklist before any release, including a closed test, can go live. Budget 1 to 2 hours for it. The <strong>data safety form</strong> deserves the most care: declare exactly what your app and its SDKs collect. Analytics and ad SDKs collect more than most developers realize, and mismatches between your declaration and your app's actual behavior are a leading cause of policy rejections later; see our <a href="/blog/data-safety-form-guide">full walkthrough of the Data Safety form</a> and our <a href="/blog/play-store-listing-checklist">complete listing checklist</a> if you want every field covered in one place.</p>
 
     <h2>Step 3: Upload your build</h2>
     <p>Head to <strong>Testing → Closed testing</strong> in the left sidebar. Google creates a default track (usually named "Alpha") for you, or you can create a new one. Click <strong>Manage track → Create new release</strong>.</p>
@@ -105,7 +105,7 @@
       <li><strong>Target API level too low:</strong> Google requires new apps to target a recent Android API level (API 34+ as of 2026). Update `targetSdkVersion`.</li>
       <li><strong>Missing 16 KB page size support:</strong> newer requirement for native libraries; update your NDK dependencies if flagged.</li>
     </ul>
-    <p>Write brief release notes (testers see these), save, and you'll reach the review screen. Don't roll out yet; set up testers first.</p>
+    <p>For a longer list of upload errors and their fixes, see our <a href="/blog/play-console-upload-errors">Play Console upload errors guide</a>. Write brief release notes (testers see these), save, and you'll reach the review screen. Don't roll out yet; set up testers first.</p>
 
     <h2>Step 4: Configure the closed testing track</h2>
     <p>This is the part most guides skip and most developers get wrong. On your track's <strong>Testers</strong> tab you choose how testers get access:</p>

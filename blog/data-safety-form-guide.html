@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-B2X7WKJ270"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-B2X7WKJ270');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google Play Data Safety Form: A Plain-English Walkthrough — Closed Testing Crew</title>
+<meta name="description" content="The Data Safety form trips up more new developers than almost any other Play Console step. Here's what each section actually means and the mistakes that get apps flagged.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Closed Testing Crew">
+<meta property="og:title" content="Google Play Data Safety Form: A Plain-English Walkthrough">
+<meta property="og:description" content="What each section of the Data Safety form actually means, and the mistakes that get apps flagged.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="../assets/favicon-192.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the Google Play Data Safety form?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It's a required disclosure in the Play Console where developers declare what user data their app collects, shares, and how it's used and secured. It appears publicly on the app's Store listing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if my Data Safety form doesn't match my app's actual behavior?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Google increasingly cross-checks declared data practices against actual app behavior and third-party SDK activity. A mismatch can result in a policy warning, a required correction, or in repeat or severe cases, account suspension."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="/" aria-label="Closed Testing Crew home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><rect x="6" y="2" width="12" height="20" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M9.5 12.5l2 2 3.5-4" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <span>Closed&nbsp;Testing&nbsp;<span class="brand-num">Crew</span></span>
+    </a>
+    <a class="btn btn-outline btn-sm nav-back" href="/blog/">All posts</a>
+  </div>
+</header>
+
+<main class="section">
+  <div class="container container-narrow legal">
+    <h1>Google Play Data Safety Form: A Plain-English Walkthrough</h1>
+
+    <p>Somewhere between uploading your first build and starting closed testing, the Play Console stops you with the Data Safety form. It looks simple: a handful of checkboxes about what data your app collects. In practice, it's one of the most commonly filled-out-wrong sections in the entire publishing flow, and getting it wrong doesn't just look bad, it can trigger real policy trouble down the line.</p>
+
+    <h2>What the form actually asks</h2>
+    <p>Google wants three things from you, honestly and specifically:</p>
+    <ul>
+      <li><strong>What data your app collects.</strong> Not just what you intentionally collect, but everything, including data gathered by third-party SDKs you've integrated (analytics tools, ad networks, crash reporters).</li>
+      <li><strong>How that data is used and shared.</strong> Whether it stays on-device, gets sent to your servers, or is shared with third parties for advertising or analytics.</li>
+      <li><strong>How it's protected.</strong> Whether data is encrypted in transit, whether users can request deletion, and whether collection is optional or required to use the app.</li>
+    </ul>
+
+    <h2>The mistake almost everyone makes</h2>
+    <p>Developers fill this out based on what they think their app does, not what it actually does. The gap is almost always the SDKs. Firebase Analytics, AdMob, Crashlytics, and most ad networks all collect data on their own, often more than developers realize, and that collection counts toward your declaration whether you remembered it or not. If you're not sure what an SDK collects, check its own privacy documentation directly rather than guessing.</p>
+
+    <h2>Section by section, what to actually declare</h2>
+
+    <h3>Data collection and sharing</h3>
+    <p>List every category that applies: location, personal info (name, email), financial info, health data, messages, photos and videos, app activity, device or other IDs. Err toward over-declaring rather than under-declaring; a data type you're not sure about should usually be included, since the downside of an unnecessary disclosure is much smaller than the downside of a missing one.</p>
+
+    <h3>Purpose of collection</h3>
+    <p>Google wants specific purposes: app functionality, analytics, advertising or marketing, fraud prevention, personalization, account management. Match this to what you actually use the data for. "Advertising" and "Analytics" are the two most commonly under-declared purposes, because developers think of them as automatic background processes rather than active data uses.</p>
+
+    <h3>Data security practices</h3>
+    <p>Whether data is encrypted in transit (almost always yes if you're using standard HTTPS), whether users can request data deletion, and whether you follow Google's Families Policy if your app targets children. Answer these based on your actual backend and account infrastructure, not aspirationally.</p>
+
+    <h3>Optional vs. required data collection</h3>
+    <p>Data collection tied to a feature the user can decline (like location for a "find nearby" feature that isn't core to the app) should be marked optional. Data required just to use the app at all (like an email for account creation) is required.</p>
+
+    <h2>Why this matters beyond just filling out a form</h2>
+    <p>The Data Safety section appears publicly on your Store listing, so users see it before installing. But more importantly for closed testing developers, Google's review systems check this declaration against real app behavior, sometimes automatically, sometimes as part of the same review process that evaluates your <a href="/blog/production-access-rejected">Production access application</a>. A mismatch here is one of the policy violations that can trigger the account suspensions we cover in <a href="/blog/suspended-developer-account-recovery">what actually gets developer accounts suspended</a>.</p>
+
+    <h2>A quick audit before you submit</h2>
+    <ol>
+      <li>List every third-party SDK in your app (check your build dependencies, not just what you remember adding).</li>
+      <li>Look up each SDK's own data collection disclosure, most major ones (Firebase, AdMob, Facebook SDK) publish this directly.</li>
+      <li>Cross-reference against what you declared. Add anything missing.</li>
+      <li>Re-read your purposes section and make sure "analytics" and "advertising" are checked if you use any ad network or analytics tool at all.</li>
+      <li>Keep a saved copy of your declaration and reasoning, so if Google ever asks you to justify it, you have your answer ready.</li>
+    </ol>
+
+    <p>Getting this right the first time saves you a policy flag later, and it's one less thing to worry about while you're managing the 12-tester, 14-day closed testing window covered in our <a href="/blog/google-play-closed-testing-setup-guide">full setup guide</a>.</p>
+
+    <div class="post-cta">
+      <strong>Focus on getting your app right, not chasing testers.</strong>
+      <p>We handle the full 14-day closed testing cycle with 12-20 real testers on daily-driver phones, so you can spend your time on things like getting the Data Safety form right. Packages start at $19.99.</p>
+      <a class="btn btn-primary" href="/#pricing">See packages</a>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container footer-bottom">
+    <p>© 2026 Closed Testing Crew. Not affiliated with Google LLC. Google Play is a trademark of Google LLC. We provide testing services only — approval decisions are made solely by Google.</p>
+  </div>
+</footer>
+
+</body>
+</html>
