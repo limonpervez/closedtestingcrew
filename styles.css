@@ -619,6 +619,29 @@ p { text-wrap: pretty; }
 .legal a { color: var(--accent-deep); font-weight: 600; }
 .legal a.btn-primary, .post-cta a.btn-primary { color: var(--on-accent); }
 
+/* ---------- chat ---------- */
+.chat-fab {
+  position: fixed; right: 1.5rem; bottom: 1.5rem; z-index: var(--z-fab);
+  width: 56px; height: 56px;
+  display: grid; place-items: center;
+  background: var(--ink); color: var(--bg);
+  border-radius: 50%;
+  box-shadow: 0 4px 16px oklch(24% 0.022 155 / 0.25);
+  transition: transform 0.2s var(--ease-out), background-color 0.2s;
+}
+.chat-fab:hover { transform: translateY(-2px); background: var(--accent-deep); }
+.chat-toast {
+  position: fixed; right: 1.5rem; bottom: 5.6rem; z-index: var(--z-toast);
+  width: min(320px, calc(100vw - 3rem));
+  background: var(--surface);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--r-md);
+  box-shadow: 6px 6px 0 0 var(--accent-tint);
+  padding: 1.1rem 1.2rem;
+}
+.chat-toast p { margin-top: 0.35rem; font-size: 0.88rem; color: var(--ink-2); }
+.chat-toast a { color: var(--accent-deep); font-weight: 600; }
+
 /* ---------- reveal motion (JS-gated: visible by default) ---------- */
 html.js .reveal {
   opacity: 0; transform: translateY(14px);
@@ -630,7 +653,7 @@ html.js .reveal.in { opacity: 1; transform: none; }
   html { scroll-behavior: auto; }
   html.js .reveal { opacity: 1; transform: none; transition: none; }
   .pulse-dot, .live-dot { animation: none; }
-  .btn { transition: none; }
+  .btn, .chat-fab { transition: none; }
 }
 
 /* ---------- responsive ---------- */
